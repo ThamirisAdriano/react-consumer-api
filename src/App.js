@@ -1,4 +1,5 @@
-// src/App.js
+import { ApolloProvider } from '@apollo/client';
+import client from './apolloClient';
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import HomePage from './components/HomePage'; // Importe o novo componente
@@ -8,6 +9,7 @@ import './App.css';
 
 function App() {
   return (
+    <ApolloProvider client={client}>
     <Router>
       <div className="App">
         <Routes>
@@ -17,6 +19,7 @@ function App() {
         </Routes>
       </div>
     </Router>
+    </ApolloProvider>
   );
 }
 

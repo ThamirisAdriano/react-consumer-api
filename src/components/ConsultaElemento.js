@@ -14,9 +14,10 @@ const GET_ELEMENTO_POR_NOME = gql`
 
 function ConsultaElemento() {
   const [nome, setNome] = useState('');
-  const [getElemento, { called, loading, data }] = useLazyQuery(GET_ELEMENTO_POR_NOME);
+  const [getElemento, { called, loading, data, error}] = useLazyQuery(GET_ELEMENTO_POR_NOME);
 
   if (loading) return <p>Carregando...</p>;
+  if (error) return <p>Ocorreu um erro ao buscar o elemento.</p>;
   if (called && !loading && data) {
     return (
       <div>
